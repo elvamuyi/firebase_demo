@@ -1,0 +1,29 @@
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Articles:
+    //   - Anyone can read public articles.
+    //   - Authenticated users can read protected articles.
+    //   - Authors can read private articles.
+    //   - Authenticated users can add articles.
+    //   - Authors can edit articles.
+    //   - Authors can delete articles.
+    match /articles/{articleId} {
+      allow read : if resource.data.permission == 'public' ||
+              (request.auth != null  && (
+              resource.data.permission == 'protected' ||
+              resource.data.authorId == request.auth.uid));
+      allow create: if request.auth != null &&
+        			request.resource.data.authorId == request.auth.uid;
+      allow update, delete: if request.auth != null &&
+              resource.data.authorId == request.auth.uid;
+  }
+    // FCM Tokens:
+    //   - Anyone can write their token.
+    //   - Reading list of tokens is not allowed.
+    match /fcmTokens/{token} {
+      allow read: if false;
+      allow write: if request.auth != null &&
+              request.resource.data.uid == request.auth.uid;
+    }
+  }
+}

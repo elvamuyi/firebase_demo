@@ -1,0 +1,174 @@
+/**
+ * Copyright 2015 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+html, body {
+  font-family: 'Roboto', 'Helvetica', sans-serif;
+}
+main {
+  height: 100%;
+  padding-bottom: 0;
+}
+#articles-card-container {
+  height: calc(100% - 35px);
+  padding-bottom: 0;
+}
+#articles-card {
+  height: 100%;
+}
+.mdl-card__supporting-text .body {
+  width: auto;
+  height: auto;
+  padding: 25px;
+}
+#article-form-card {
+  height: fit-content;
+}
+.mdl-layout__header-row span {
+  margin-left: 15px;
+  margin-top: 17px;
+}
+.mdl-grid {
+  width: auto;
+  margin: auto;
+}
+.material-icons {
+  font-size: 36px;
+  top: 8px;
+  position: relative;
+  margin-right: 10px;
+}
+.metadata .material-icons {
+  font-size: 24px;
+}
+.mdl-layout__header-row {
+  padding: 0;
+  margin: 0 auto;
+}
+.mdl-card__supporting-text {
+  width: auto;
+  height: 100%;
+  padding: 0 25px;
+}
+#articles {
+  overflow-y: auto;
+  margin-bottom: 10px;
+  height: calc(100% - 80px);
+  display: flex;
+  flex-direction: column;
+}
+#message-filler {
+  flex-grow: 1;
+}
+.article-container {
+  display: block;
+  margin-top: 10px;
+  border-top: 1px solid #f3f3f3;
+  width: auto;
+  min-height: fit-content;
+}
+#article-form {
+  display: contents;
+  flex-direction: row;
+  width: calc(100% - 48px);
+  float: left;
+}
+#article-form .mdl-textfield {
+  width: 80%;
+}
+#article-form .mdl-radio__label {
+  margin-right: 10px;
+}
+#article-form button {
+  width: 100px;
+  margin: 25px 0 30px 0;
+}
+.mdl-card {
+  background: linear-gradient(white, #f9f9f9);
+  justify-content: space-between;
+  margin: 0 30px;
+}
+.mdl-card .article-container {
+  margin: 10px 0;
+}
+.mdl-card__title {
+  padding-left: 25px;
+}
+.mdl-card__menu {
+  top: 5px;
+}
+.mdl-card__actions {
+  border-bottom: 1px solid rgba(0,0,0,.1);
+}
+#user-container {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  top: 22px;
+  width: 100%;
+  right: 30px;
+  padding-left: 10px;
+  justify-content: flex-end;
+  padding-right: 10px;
+}
+#user-container #user-pic {
+  top: -3px;
+  position: relative;
+  display: inline-block;
+  background-image: url('/images/profile_placeholder.png');
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+  background-size: 40px;
+  border-radius: 20px;
+}
+#user-container #user-name {
+  font-size: 16px;
+  line-height: 36px;
+  padding-right: 10px;
+  padding-left: 20px;
+}
+@media screen and (max-width: 610px) {
+  header {
+    height: 113px;
+    padding-bottom: 80px !important;
+  }
+  #user-container {
+    top: 72px;
+    background-color: rgb(3,155,229);
+    height: 38px;
+    padding-top: 3px;
+    padding-right: 2px;
+  }
+  #user-container #user-pic {
+    top: 2px;
+    width: 33px;
+    height: 33px;
+    background-size: 33px;
+  }
+}
+.mdl-textfield__label:after {
+  background-color: #0288D1;
+}
+.mdl-textfield--floating-label.is-focused .mdl-textfield__label {
+  color: #0288D1;
+}
+.mdl-button .material-icons {
+  top: -1px;
+  margin-right: 5px;
+}
+#edit-dialog {
+  width: 800px;
+}
