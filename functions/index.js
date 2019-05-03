@@ -46,6 +46,26 @@ exports.addWelcomeArticles = functions.auth.user().onCreate(async (user) => {
   console.log('Welcome article written to database.');
 });
 
+// Delete articles upon user deletion
+exports.deleteArticles = functions.auth.user().onDelete(async (user) => {
+  var articles = await admin.firestore().collection('articles').where('authorId', '==', user.uid).get();
+  await deleteEntries(articles);
+});
+
+// Delete tokens upon user deletion
+exports.deleteTokens = functions.auth.user().onDelete(async (user) => {
+  var tokens = await admin.firestore().collection('fcmTokens').where('uid', '==', user.uid).get();
+  await deleteEntries(tokens);
+});
+
+function deleteEntries(query) {
+  const entriesDelete = [];
+  query.forEach((doc) => {
+    entriesDelete.push(doc.ref.delete());
+  });
+  return Promise.all(entriesDelete);
+}
+
 // Sends a notifications to all authenticated users when a new article is posted.
 exports.sendNotifications = functions.firestore.document('articles/{articleId}').onCreate(
   async (snapshot) => {
